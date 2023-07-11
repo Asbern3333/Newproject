@@ -1,0 +1,131 @@
+function MyComponent() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+function MyButton() {
+  return (
+    <button id='btn' onClick={()=>Output1()}>To-Do</button>
+
+  );
+}
+function Output1(){
+  console.log("hi");
+ let in12=document.getElementById("To-input");
+ let fquote=document.getElementById("text1");
+ fquote.textContent=in12.value;
+ console.log(choice);
+}*/
+
+/*export function Important()
+{
+  return (
+    
+  );
+}*/
+
+import { useState } from 'react'
+import './App.css'
+import list from "./data"
+import ToDo from './Todo';
+import classNames from "classnames";
+import Modal from "./ui/Modal";
+import AddJobForm from "./AddJobForm"
+
+
+
+
+const statuses= {
+  1:"Working on",
+  2:"removed",
+  3:"finished",
+};
+
+
+
+
+
+
+
+
+export default function MyApp() {
+  console.log("first");
+  const [todolist,setToDoList]=useState(list);
+  const [selectedStatus,setSelectedStatus]=useState(1);
+  const [isModalVisible, setIsModalVisible]=useState(false);
+
+  console.log(selectedStatus);
+  const filterIU=todolist.filter(todo=>(todo.imp===true&&todo.urgent===true)&&todo.state===selectedStatus)
+
+const showTodos  = todolist.map(todo=>{
+  return (<li>{todo.todo}</li>)
+})
+
+  
+// console.log("hi1"+IU.length);
+const statusButtons=Object.keys(statuses).map(statusId=>{
+  const buttonClass=classNames(
+    "px-4 py-2 border",
+    {
+      "bg-blue-500": selectedStatus===parseInt(statusId)
+    }
+  )
+  console.log('before return button ');
+  //console.log(statusId);
+  return(
+    
+    <button
+    key={statusId}
+    className={buttonClass}
+    onClick={()=>setSelectedStatus(parseInt(statusId  ))}>{statuses[statusId]}</button>
+  );
+})
+console.log('before showModal');
+const showModal=() =>{
+  setIsModalVisible(true);
+};
+const hideModal=() =>{
+  setIsModalVisible(false);
+}
+const onAddJob =(newJob) => {
+//hideModal();
+  setToDoList((todolist)=>{
+   // console.log("hi"+todolist.length) 
+    
+    return( [...todolist, newJob]);
+    
+  });
+};
+
+return(
+
+ <div id="first" className=' px-40 bg-yellow-400'>  
+ <h1 className='px-60 bg-red-500'>To-Do-List</h1>
+<div className="grid grid-cols-6 my-4">{statusButtons}</div>
+<div className="flex justify-between"> 
+<div></div>
+<div>
+  <button
+  className="bg-blue-500 px-4 py-2 hover:bg-blue-600 transition"
+  onClick={showModal}>+add Job</button>
+</div>
+</div>
+
+  <div className=''>
+      <ul>
+        {showTodos}
+      </ul>
+    </div>
+    <Modal isVisible={isModalVisible} hideModal={hideModal}>
+<AddJobForm onAddJob={onAddJob} />
+
+</Modal>
+  
+    </div>
+
+    
+);}

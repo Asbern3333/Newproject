@@ -1,0 +1,56 @@
+/*
+#To-input{
+  width: 420px;
+  height: 25px;
+  text-align: center;
+  position: absolute;
+  left: 32%
+  
+}
+#btn{
+  justify-content: center;
+  width:100px;
+  height: 30px;  
+  background-color: aqua;
+  margin: 0;
+  position: absolute;
+  left: 68%;
+  
+}
+#h1{
+  text-align: center;
+}
+span{
+  height: 100px;
+  font-size: x-large;
+}*/
+
+/*hr{
+  width: 200px;
+  margin-right:300px ;
+}
+#iau{
+  width: 300px;
+
+}
+#ian{
+ width: 300px;
+  background-color: yellow;
+}
+#nan{
+  margin-left: 300px;
+  background-color: blue;
+}
+#uan{
+  margin-left: 300px;
+background-color: red;
+}
+*/
+table, th{
+  border:2px solid black;
+  height: flex;
+}   
+#T{
+  width: 600px;
+  
+}
